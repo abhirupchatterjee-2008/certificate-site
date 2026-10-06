@@ -9,7 +9,7 @@ module.exports=async(req,res)=>{
   const results=[];
   for(const job of jobs){
    if(!job.email) continue;
-   const payload={from,to:from,bcc:[job.email],subject,html};
+   const payload={from,to:from,bcc:[job.email],subject:job.subject||subject,html:job.html||html};
    if(job.attachment) payload.attachments=[job.attachment];
    const r=await fetch("https://api.resend.com/emails",{method:"POST",headers:{"Authorization":"Bearer "+key,"Content-Type":"application/json"},body:JSON.stringify(payload)});
    const data=await r.json();
