@@ -5,7 +5,7 @@ module.exports=async(req,res)=>{
   if(!secret||!token.includes(".")) return res.status(400).json({valid:false,error:"Invalid verification token"});
   const [body,sig]=token.split(".");
   const expected=crypto.createHmac("sha256",secret).update(body).digest("base64url");
-  const ok=crypto.timingSafeEqual(Buffer.from(sig),Buffer.from(expected));
+  const ok=sig.length===expected.length && crypto.timingSafeEqual(Buffer.from(sig),Buffer.from(expected));
   if(!ok) return res.status(200).json({valid:false});
   try{
     const payload=JSON.parse(Buffer.from(body,"base64url").toString("utf8"));
