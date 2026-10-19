@@ -24,7 +24,7 @@
 </head>
 <body><div id="root"></div><div id="toast" class="toast"></div>
 <script>
-var S={rows:[],template:localStorage.getItem("lcmun_template")||"",active:"dashboard",event:"LC MUN",date:"2026",prefix:"LCM26",cols:{name:"Name",committee:"Committee",portfolio:"Portfolio",email:"Email"}};
+var S={rows:[],template:localStorage.getItem("lcmun_template")||"assets/lcmun-certificate-template.jpg",active:"dashboard",event:"LC MUN",date:"2026",prefix:"LCM26",cols:{name:"Name",committee:"Committee",portfolio:"Portfolio",email:"Email"}};
 function $(s){return document.querySelector(s)}function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
 function toast(m){$("#toast").textContent=m;$("#toast").classList.add("show");setTimeout(function(){$("#toast").classList.remove("show")},2400)}
 function nav(){var a=[["dashboard","Dashboard"],["certificates","Certificates"],["template","Template Studio"],["verification","Verification"]];return '<aside class="side"><div class="brandlogos"><img src="assets/lcmun-l.webp" alt="Loreto College UN MUN Cell"><img src="assets/lcmun-r.webp" alt="Maria Regina Angelorum"></div><div class="brand"><div class="crest">LC</div><div><b>LC MUN</b><span>Certificate Studio</span></div></div><nav>'+a.map(function(x){return '<button class="'+(S.active==x[0]?"active":"")+'" onclick="go(\''+x[0]+'\')">'+x[1]+'</button>'}).join("")+'</nav><small>Private certificate workspace<br>High-volume event delivery</small></aside>'}
